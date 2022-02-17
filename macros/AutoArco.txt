@@ -1,0 +1,33 @@
+$${
+
+TOGGLE(sleep_macro);
+IF(sleep_macro);
+    LOG("&6[AutoArco] &aLigado");
+        IF(!first);
+            SET(first);
+            LOG("");
+            LOG("&6&l[&f&oI&fnfo&6&l] &aAdicione os seus amigos e aliados na macro &fAmigos Online &apara &anão atacar eles. &9&o#SLEEP");
+            LOG("");
+        ENDIF;
+    SET(#clicks,"");
+        DO;
+            PICK(261);
+                IF(%ITEM%=261);
+                    IFMATCHES("%@&radar_lista%","<%HITNAME%>");
+                    ELSE;
+                            DO(18);
+                                PICK(261);
+                                    IF(%ITEM%=261);
+                                        KEY(USE);
+                                    ENDIF;
+                            LOOP;
+                        INC(#clicks,1);
+                    ENDIF;
+                ENDIF;
+        LOOP;
+ELSE;
+    LOG("&6[AutoArco] &cDesligado &8- &7&ox%#clicks% &7flechas");
+    STOP;
+ENDIF;
+    
+}$$

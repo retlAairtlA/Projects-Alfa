@@ -1,0 +1,19 @@
+$${
+
+TOGGLE(@pvp);
+    IF(@pvp);
+        SETLABEL("StatusPVP","&6PvP Status: &2ON");
+        SET(@&info_msg,"&aPvP Status ativado.");
+        SET(@#counter_dados,"");
+        SET(@#counter_recebidos,"");
+        SET(@#esquivou,"");
+        SETLABEL("PVP","&f[&2%@#counter_dados%&f] &a**CONTRA-ATACOU** \n&f[&c%@#counter_recebidos%&f] &4**Atingido**\n&f[&2%@#esquivou%&f] &a**Esquivou**");
+    ELSE;
+        SETLABEL("StatusPVP","&6PvP Status: &4OFF");
+        SET(@&info_msg,"&cPvP Status desativado.");
+        SETLABEL("PVP","");
+    ENDIF;
+SET(@#info_time,"60");
+EXEC(Info.txt,INFO);
+
+}$$

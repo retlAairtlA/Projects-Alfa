@@ -1,0 +1,24 @@
+$${
+
+DO(1);
+    PROMPT(@#health,"$$[Vida[1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19]]","Auto %@&auto_action%");
+        IF((%@#health%>=1)&&(%@#health%<20));
+                IF(@home);
+                    SETLABEL("StatusAUTO","&6Auto %@&auto_action%: &2ON &f(&c%@#health%&f)");
+                    SET(@&info_msg,"&aAuto %@&auto_action% com &f%@#health% &ade vida.");
+                ELSE;
+                    SETLABEL("StatusAUTO","&6Auto %@&auto_action%: &4OFF");
+                    SET(@&info_msg,"&aAuto %@&auto_action% com &f%@#health% &ade vida (está &4OFF&a).");
+                ENDIF;
+            SET(respondido);
+        ELSE;
+            SET(@#health,"5");
+            SET(@&info_msg,"&cVocê deve escolher um número de &f1 &caté &f19&c. Vida padrão inserida.");
+            SET(respondido);
+        ENDIF;
+    SET(@verificar);
+    SET(@#info_time,"115");
+    EXEC(Info.txt,INFO);
+LOOP;
+
+}$$

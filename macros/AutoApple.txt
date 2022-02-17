@@ -1,0 +1,45 @@
+$${
+
+TOGGLE(sleep_macro);
+IF(sleep_macro);
+    LOG("&6[AutoApple] &aLigado");
+    LOG("&e&l» &7Script desenvolvido por &9SLEEP&7.");
+ELSE;
+    LOG("&6[AutoApple] &cDesligado");
+    STOP;
+ENDIF;
+
+    DO;
+        SET(&effects,"");
+            FOREACH(effects);
+                IF((%EFFECTID%=10)&&(%EFFECTPOWER%>=4)&&(%EFFECTTIME%>3));
+                    SET(&effects,"CAPIROTO");
+                ENDIF;
+            NEXT;
+            IF(%&effects%!="CAPIROTO");
+                PICK(322:1,golden_apple:1);
+                    IFMATCHES("%ITEMIDDMG%","(322|golden_apple):1");
+                    ELSE;
+                        LOG("&e&l» &7Nenhuma &9Maça Dourada Encantada &7encontrada.");
+                        LOG("&6[AutoApple] &cDesligado");
+                        TOGGLE(sleep_macro);
+                        STOP;                       
+                    ENDIF;
+                    UNSAFE;
+                        UNSET(break);
+                            DO;
+                                PICK(322:1,golden_apple:1);
+                                KEY(USE);
+                                    FOREACH(effects);
+                                        IF((%EFFECTID%=10)&&(%EFFECTPOWER%>=4)&&(%EFFECTTIME%>3));
+                                            SET(break);
+                                            BREAK;
+                                        ENDIF;
+                                    NEXT;                       
+                            UNTIL(break);
+                    ENDUNSAFE;
+                PICK(276,diamond_sword);
+            ENDIF;
+    LOOP;
+    
+}$$

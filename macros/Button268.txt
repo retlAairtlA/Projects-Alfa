@@ -1,0 +1,32 @@
+$${
+
+DO(1);
+    PROMPT(&nick_radar,"$$?","Quem você deseja adicionar?");
+        IFMATCHES("%&nick_radar%","^([a-z|0-9|_|-]*)$",&filter,1,NONE);
+            IFMATCHES("%&filter%","[\w_-]+[\w_-]+[\w_-]+[\w_-]+[\w_-]+[\w_-]+[\w_-]+[\w_-]+[\w_-]+[\w_-]+[\w_-]+[\w_-]+[\w_-]+[\w_-]+[\w_-]+[\w_-]+[\w_-]+");
+                SET(@&info_msg,"&cNick inválido.");
+            ELSE;
+                IFMATCHES("%&filter%","[\w_-]+[\w_-]+[\w_-]+");
+                    IFMATCHES("%PLAYER%","^%&filter%$");
+                        SET(@&info_msg,"&cNão é possível adicionar você mesmo.");
+                    ELSE;
+                        IFMATCHES("%@&radar_lista%","<%&filter%>");
+                            SET(@&info_msg,"&f%&filter% &cjá está na lista.");
+                        ELSE;
+                            SET(@&radar_lista,"%@&radar_lista%<%&filter%>");
+                            SET(@&info_msg,"&f%&filter% &aadicionado na lista.");
+                            INC(@#radar_amigos,1);
+                        ENDIF;
+                    ENDIF;
+                ELSE;
+                    SET(@&info_msg,"&cNick inválido.");
+                ENDIF;                                      
+            ENDIF;
+        ELSE;
+            SET(@&info_msg,"&cNick inválido.");
+        ENDIF;
+    SET(@#info_time,"115");
+    EXEC(Info.txt,INFO);          
+LOOP;   
+    
+}$$

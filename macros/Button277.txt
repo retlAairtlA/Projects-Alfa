@@ -1,0 +1,25 @@
+$${
+
+TOGGLE(@home);
+    IF(@home);
+        IF(%@&auto_action%="Home");
+            SETLABEL("StatusAUTO","&6Auto %@&auto_action%: &2ON &f(&c%@#health%&f)");
+            SET(@&info_msg,"&aAuto Home ativado.");
+        ELSE;
+            SETLABEL("StatusAUTO","&6Auto %@&auto_action%: &2ON &f(&c%@#health%&f)");
+            SET(@&info_msg,"&aAuto DC ativado.");
+        ENDIF;
+    ELSE;
+        IF(%@&auto_action%="Home");
+            SETLABEL("StatusAUTO","&6Auto Home: &4OFF");
+            SET(@&info_msg,"&cAuto Home desativado.");
+        ELSE;
+            SETLABEL("StatusAUTO","&6Auto DC: &4OFF");
+            SET(@&info_msg,"&cAuto DC desativado.");
+        ENDIF;
+    ENDIF;
+EXEC(AutoDCorHome.txt,AUTODCEHOME); 
+SET(@#info_time,"60");
+EXEC(Info.txt,INFO);
+
+}$$

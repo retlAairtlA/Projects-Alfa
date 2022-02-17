@@ -1,0 +1,16 @@
+$${
+
+TOGGLE(@afk);
+UNSET(@afk_onchat);
+    IF(@afk);
+        SETLABEL("StatusAFK","\n\n&6Modo AFK: &2ON");
+        SET(@&info_msg,"&aModo AFK ativado.");
+        SET(@&afk_onchat_bn,"");
+    ELSE;
+        SETLABEL("StatusAFK","\n\n&6Modo AFK: &4OFF");
+        SET(@&info_msg,"&cModo AFK desativado.");
+    ENDIF;
+SET(@#info_time,"60");
+EXEC(Info.txt,INFO);
+
+}$$

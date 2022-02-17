@@ -1,0 +1,17 @@
+$${
+
+IF(%@&afk_onchat_bn%=NONE);
+    SET(@&info_msg,"&cNenhuma mensagem recebida.");
+    SET(@#info_time,"100");
+    EXEC(Info.txt,INFO);
+ELSE;
+    SET(@&info_msg,"&aVocê recebeu uma mensagem de &f%@&afk_onchat_bn% &aàs &f%@&afk_time_msg%&a.");
+    LOG("");
+    LOG("&8(Mensagem de %@&afk_onchat_bn%): &2%@&afk_last_msg%");
+    LOG("");
+    SET(@&afk_onchat_bn,"");
+    SET(@#info_time,"215");
+    EXEC(Info.txt,INFO);
+ENDIF;
+
+}$$

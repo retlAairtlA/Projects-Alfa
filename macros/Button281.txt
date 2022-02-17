@@ -1,0 +1,22 @@
+$${
+
+IF(%@&kills_lista%=NONE);
+    GUI();
+    SET(@&info_msg,"&cA lista está vazia.");
+    SET(@#info_time,"115");
+    EXEC(Info.txt,INFO);        
+ELSE;
+    LOG("");
+    SET(&kills_copy,"%@&kills_lista%");
+        UNSAFE;
+            DO(300);
+                IFMATCHES("%&kills_copy%","^<([a-z|0-9|_|-]+)>(.*)$");
+                    MATCH("%&kills_copy%","^<([a-z|0-9|_|-]+)>(.*)$",{&nick_mostrar,&kills_copy});
+                    LOG("&a%&nick_mostrar%");
+                ENDIF;
+            UNTIL(%&kills_copy%=NONE);
+        ENDUNSAFE;
+    LOG("");
+ENDIF;
+
+}$$

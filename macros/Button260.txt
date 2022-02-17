@@ -1,0 +1,15 @@
+$${
+
+TOGGLE(@coordenadas);
+    IF(@coordenadas);
+        SETLABEL("StatusCOORD"," &6COORD\n&6&ona tela:\n   &2ON");
+        SET(@&info_msg,"&aCoordenadas na Tela ativado.");
+        EXEC(FPSorCOORD.txt,FPSECOORDENADAS); 
+    ELSE;
+        SETLABEL("StatusCOORD"," &6COORD\n&6&ona tela:\n   &4OFF");
+        SET(@&info_msg,"&cCoordenadas na Tela desativado.");
+    ENDIF;
+SET(@#info_time,"60");
+EXEC(Info.txt,INFO);
+
+}$$

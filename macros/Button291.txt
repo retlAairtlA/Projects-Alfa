@@ -1,0 +1,24 @@
+$${
+
+DO(1);
+    PROMPT(@#durabilidade,"$$[Durabilidade[10,20,30,40,50,60,70,80,90,100]]","Alerta de Armadura no Vermelho");
+        IF((%@#durabilidade%>9)&&(%@#durabilidade%<101));
+                IF(@alerta);
+                    SETLABEL("StatusALERTA","\n\n&6Alerta de Armadura: &2ON &f(&c%@#durabilidade%&f)");
+                    SET(@&info_msg,"&aAlerta de Armadura no Vermelho com &f%@#durabilidade% &ade durabilidade.");
+                ELSE;
+                    SETLABEL("StatusALERTA","\n\n&6Alerta de Armadura: &4OFF");
+                    SET(@&info_msg,"&aAlerta de Armadura no Vermelho com &f%@#durabilidade% &ade durabilidade (está &4OFF&a).");
+                ENDIF;
+            SET(respondido);
+        ELSE;
+            SET(@#durabilidade,"60");
+            SET(@&info_msg,"&cVocê deve escolher um número de &f10 &caté &f100&c. Durabilidade padrão inserida.");
+            SET(respondido);
+        ENDIF;
+    SET(@verificar);
+    SET(@#info_time,"115");
+    EXEC(Info.txt,INFO);
+LOOP;
+
+}$$

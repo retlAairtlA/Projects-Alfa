@@ -1,0 +1,62 @@
+$${
+
+TOGGLE(sleepmacro);
+IF(sleepmacro);
+    LOG("&6[SaveArmor] &aLigado ");
+    LOG("&e&l» &7Script desenvolvido por &9SLEEP&7.");
+    UNSET(autoset);
+ELSE;
+    LOG("&6[SaveArmor] &cDesligado ");
+    STOP;
+ENDIF;
+
+// Você pode mudar a durabilidade para remover a armadura logo abaixo (padrao 20):
+SET(#durabilidade_para_remover,"20");
+
+    DO;
+            IF((%HELMID%!=0)&&(%HELMDURABILITY%<=%#durabilidade_para_remover%));
+                SET(autoset);
+                SET(&armor_name,"&9Elmo");
+                SET(#slot_number,"5");
+            ELSEIF((%CHESTPLATEID%!=0)&&(%CHESTPLATEDURABILITY%<=%#durabilidade_para_remover%));
+                SET(autoset);
+                SET(&armor_name,"&9Peitoral");
+                SET(#slot_number,"6");
+            ELSEIF((%LEGGINGSID%!=0)&&(%LEGGINGSDURABILITY%<=%#durabilidade_para_remover%));
+                SET(autoset);
+                SET(&armor_name,"&9Calças");
+                SET(#slot_number,"7");
+            ELSEIF((%BOOTSID%!=0)&&(%BOOTSDURABILITY%<=%#durabilidade_para_remover%));
+                SET(autoset);
+                SET(&armor_name,"&9Botas");
+                SET(#slot_number,"8");
+            ENDIF;
+            IF(autoset);
+                GUI(INVENTORY);
+                    IF(KEY_W);
+                        KEYDOWN(FORWARD);
+                    ELSEIF(KEY_S);
+                        KEYDOWN(BACK);
+                    ENDIF;
+                    IF(KEY_A);
+                        KEYDOWN(LEFT);
+                    ELSEIF(KEY_D);
+                        KEYDOWN(RIGHT);
+                    ENDIF;
+                    IF(SHIFT);
+                        KEYDOWN(SNEAK);
+                    ELSEIF(KEY_SPACE);
+                        KEYDOWN(JUMP);
+                    ENDIF;  
+                    IF(RMOUSE);
+                        KEY(USE);
+                    ENDIF;                  
+                SLOTCLICK(%#slot_number%,L,TRUE);                    
+                GUI();
+                WAIT(100ms);
+                LOG("&e&l» %&armor_name% &7retirado, durabilidade menor ou igual a &9%#durabilidade_para_remover%&7.");
+            ENDIF;
+        UNSET(autoset);
+    LOOP;
+
+}$$

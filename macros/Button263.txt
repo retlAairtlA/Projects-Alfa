@@ -1,0 +1,15 @@
+$${
+
+TOGGLE(@armor);
+    IF(@armor);
+        SETLABEL("StatusARMOR","&6Armor/Effect Status: &2ON");
+        SET(@&info_msg,"&aArmor/Effect Status ativado.");
+    ELSE;
+        SETLABEL("StatusARMOR","&6Armor/Effect Status: &4OFF");
+        SET(@&info_msg,"&cArmor/Effect Status desativado.");
+    ENDIF;
+EXEC(Armor.txt,ARMOR); 
+SET(@#info_time,"60");
+EXEC(Info.txt,INFO);
+
+}$$

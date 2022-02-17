@@ -1,0 +1,15 @@
+$${
+
+TOGGLE(@radar);
+    IF(@radar);
+        SETLABEL("StatusRADAR","\n\n&6Amigos Online: &2ON");
+        SET(@&info_msg,"&aAmigos Online ativado.");
+    ELSE;
+        SETLABEL("StatusRADAR","\n\n&6Amigos Online: &4OFF");
+        SET(@&info_msg,"&cAmigos Online desativado.");
+    ENDIF;
+EXEC(Radar.txt,RADAR); 
+SET(@#info_time,"60");
+EXEC(Info.txt,INFO);
+
+}$$

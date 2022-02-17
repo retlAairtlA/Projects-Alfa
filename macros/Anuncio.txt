@@ -1,0 +1,49 @@
+$${
+
+TOGGLE(sleep_macro);
+IF(sleep_macro);
+    LOG("&6&l[&f&oM&facro&6&l] &aAnuncio Automático &f&l[&2ON&f&l]");
+    WAIT(10T); 
+    PROMPT(#delay,"$$[ [60,120,180,240,300,600,1200]]","Quanto tempo (em segundos) entre cada mensagem?");
+        IF((%#delay%<60)||(%#delay%>1200));
+            LOG("&6&l[&f&oM&facro&6&l] &cVocê deve escolher um número de &f60 &caté &f1200&c. &9&o#SLEEP");
+            LOG("&6&l[&f&oM&facro&6&l] &cAnuncio Automático &f&l[&4OFF&f&l]");  
+            TOGGLE(sleep_macro);
+            STOP;
+        ELSE;
+            SET(#anuncio_inc,"");
+        ENDIF;
+        DO;
+            INC(#anuncio_inc,1);
+                IF(%#anuncio_inc%=1);
+                    ECHO("/a &8coloque seu anuncio aqui &f[SLEEP ModPack 4.2] &8/home %PLAYER% loja");
+                ELSEIF(%#anuncio_inc%=2);
+                    ECHO("/a &8coloque seu anuncio aqui &f[SLEEP ModPack 4.2] &8/home %PLAYER% loja");
+                ELSEIF(%#anuncio_inc%=3);
+                    ECHO("/a &8coloque seu anuncio aqui &f[SLEEP ModPack 4.2] &8/home %PLAYER% loja");
+                ELSEIF(%#anuncio_inc%=4);
+                    ECHO("/a &8coloque seu anuncio aqui &f[SLEEP ModPack 4.2] &8/home %PLAYER% loja");
+                ELSEIF(%#anuncio_inc%=5);
+                    ECHO("/a &8coloque seu anuncio aqui &f[SLEEP ModPack 4.2] &8/home %PLAYER% loja");
+                ELSEIF(%#anuncio_inc%=6);
+                    ECHO("/a &8coloque seu anuncio aqui &f[SLEEP ModPack 4.2] &8/home %PLAYER% loja");
+                ELSEIF(%#anuncio_inc%=7);
+                    ECHO("/a &8coloque seu anuncio aqui &f[SLEEP ModPack 4.2] &8/home %PLAYER% loja");
+                ELSEIF(%#anuncio_inc%=8);
+                    ECHO("/a &8coloque seu anuncio aqui &f[SLEEP ModPack 4.2] &8/home %PLAYER% loja");
+                ELSEIF(%#anuncio_inc%=9);           
+                    ECHO("/a &8coloque seu anuncio aqui &f[SLEEP ModPack 4.2] &8/home %PLAYER% loja");
+                ELSEIF(%#anuncio_inc%=10);
+                    ECHO("/a &8coloque seu anuncio aqui &f[SLEEP ModPack 4.2] &8/home %PLAYER% loja");
+                ENDIF;
+                IF(%#anuncio_inc%>=10);
+                    SET(#anuncio_inc,"1");
+                ENDIF;
+            WAIT(%#delay%);
+        LOOP;
+ELSE;
+    LOG("&6&l[&f&oM&facro&6&l] &cAnuncio Automático &f&l[&4OFF&f&l]");  
+    STOP;   
+ENDIF;
+
+}$$

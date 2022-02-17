@@ -1,0 +1,26 @@
+$${
+
+TOGGLE(sleep_macro);
+    IF(sleep_macro);
+        LOG("&6[AutoClick] &aLigado");
+            IF(!first);
+                SET(first);
+                LOG("");
+                LOG("&6&l[&f&oI&fnfo&6&l] &aAdicione os seus amigos e aliados na macro &fAmigos Online &apara &anão atacar eles. &9&o#SLEEP");
+                LOG("");
+            ENDIF;
+        SET(#clicks,"");
+            DO;
+                IFMATCHES("%@&radar_lista%","<%HITNAME%>");
+                ELSE;
+                    KEY(ATTACK);
+                    WAIT(1MS);
+                    INC(#clicks,1);
+                ENDIF;
+            LOOP;
+    ELSE;
+        LOG("&6[AutoClick] &cDesligado &8- &7&ox%#clicks% &7clicks");
+        STOP;
+    ENDIF;
+
+}$$

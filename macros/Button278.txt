@@ -1,0 +1,23 @@
+$${
+
+TOGGLE(@dchome);
+    IF(@dchome);
+        SET(@&auto_action,"Home");
+    ELSE;
+        SET(@&auto_action,"DC");
+    ENDIF;
+    IF(@home);
+        IF(%HEALTH%>%@#health%);
+            SETLABEL("StatusAUTO","&6Auto %@&auto_action%: &2ON &f(&c%@#health%&f)");
+        ELSE;
+            SETLABEL("StatusAUTO","&6Auto %@&auto_action%: &2&oON &f(&c&o%@#health%&f)");
+        ENDIF;
+    ELSE;
+        IF(%@&auto_action%="Home");
+            SETLABEL("StatusAUTO","&6Auto Home: &4OFF");
+        ELSE;
+            SETLABEL("StatusAUTO","&6Auto DC: &4OFF");
+        ENDIF;
+    ENDIF;
+
+}$$

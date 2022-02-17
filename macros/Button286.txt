@@ -1,0 +1,15 @@
+$${
+
+TOGGLE(@sprint);
+    IF(@sprint);
+        SETLABEL("StatusSPRINT","&6Sprint: &2ON");
+        SET(@&info_msg,"&aSprint ativado.");
+    ELSE;
+        SETLABEL("StatusSPRINT","&6Sprint: &4OFF");
+        SET(@&info_msg,"&cSprint desativado.");
+    ENDIF;
+EXEC(Sprint.txt,SPRINT); 
+SET(@#info_time,"60");
+EXEC(Info.txt,INFO);
+
+}$$
